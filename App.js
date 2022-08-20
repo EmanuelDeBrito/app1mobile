@@ -1,7 +1,18 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default function App() {
+  const [valor1,setValor1]= useState("20");
+  const [valor2,setValor2]= useState("20");
+  const [resultado,setResultado]= useState();
+	
+	function soma(){
+  		let r = parseFloat(valor1) + parseFloat(valor2);
+		setResultado(r);
+	}
+	
+	
+	//Form f = new from(); instancia
   return (
 <View  style={styles.containerprinc}>
     <View style={styles.container}>
@@ -10,19 +21,40 @@ export default function App() {
 			  <Text style={styles.titulo}>Calculadora Simples</Text>
 		  </View>
 		  <View style={styles.bloco}>
-			  <Text>Valor 1:</Text>
-			  <TextInput style={styles.input}/>
+			  <Text>Valor 1: </Text>
+			  <TextInput 
+				  style={styles.input}
+				  value={valor1}
+				  onChangeText={(valor)=>setValor1(valor)} //Altera o valor
+				  keyboardType="numeric" // Deixa o usario somente digitar numeros evitando um possivel erro
+			   />
 		  </View>
 		  <View style={styles.bloco}>
-			  <Text>Valor 2:</Text>
-			<TextInput style={styles.input}/>		  
+			  <Text>Valor 2: </Text>
+			<TextInput 
+				style={styles.input}
+				 value={valor2}
+				onChangeText={(valor)=>setValor2(valor)} //Altera o valor
+				keyboardType="numeric" // Deixa o usario somente digitar numeros evitando um possivel erro
+				/>		  
 		  </View>
 		  <View style={styles.bloco2}>
-		  	<TouchableOpacity style={styles.botao}>
-				<Text style={styles.textoBotao}>Somar</Text>
+		  	<TouchableOpacity 
+				style={styles.botao}
+				onPress={soma}
+				
+			>
+				<Text 
+					style={styles.textoBotao}>Somar
+				</Text>
 			</TouchableOpacity>
 		  </View>
     </View>
+	   <View style={styles.bloco2}>
+		<Text style={styles.titulo}>
+			Resultado: {resultado}
+		</Text>
+	   </View>
 </View>
   );
 }
@@ -57,7 +89,7 @@ const styles = StyleSheet.create({
 		borderRadius:20
 	},
 	botao:{
-		backgroundColor:'#000',
+		backgroundColor:'#32CD32',
 		borderRadius:20,
 		width:'28%'
 		
@@ -69,7 +101,7 @@ const styles = StyleSheet.create({
 	},
 	textotitulo:{
 		textAlign:'center',
-		fontSize: 20,
+		fontSize: 25,
 		
 }
 });
