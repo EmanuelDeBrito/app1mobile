@@ -10,8 +10,22 @@ export default function App() {
   		let r = parseFloat(valor1) + parseFloat(valor2);
 		setResultado(r);
 	}
-	
-	
+	function subtracao(){
+		let s = parseFloat(valor1) - parseFloat(valor2);
+		setResultado(s);
+	}
+	function multiplicacao(){
+		let m = parseFloat(valor1) * parseFloat(valor2);
+		setResultado(m);
+	} 
+		function divisao(){
+		let d = parseFloat(valor1) / parseFloat(valor2);
+		setResultado(d);
+	} 
+		function exponeciacao(){
+		let e = Math.pow(parseFloat(valor1), parseFloat(valor2));
+		setResultado(e);
+	} 
 	//Form f = new from(); instancia
   return (
 <View  style={styles.containerprinc}>
@@ -39,15 +53,47 @@ export default function App() {
 				/>		  
 		  </View>
 		  <View style={styles.bloco2}>
-		  	<TouchableOpacity 
+	
+		  	<TouchableOpacity
 				style={styles.botao}
-				onPress={soma}
-				
-			>
+				onPress={soma}>
 				<Text 
 					style={styles.textoBotao}>Somar
 				</Text>
 			</TouchableOpacity>
+			  
+			 <TouchableOpacity
+				style={styles.botao}
+				onPress={subtracao}>
+				<Text 
+					style={styles.textoBotao}>Subtrair
+				</Text>
+			</TouchableOpacity>
+			  
+			  <TouchableOpacity
+				style={styles.botao}
+				onPress={multiplicacao}>
+				<Text 
+					style={styles.textoBotao}>Multiplicar
+				</Text>
+			</TouchableOpacity>
+			  
+			  <TouchableOpacity
+				style={styles.botao}
+				onPress={divisao}>
+				<Text 
+					style={styles.textoBotao}>Dividir
+				</Text>
+			</TouchableOpacity>
+			  
+			 <TouchableOpacity
+				style={styles.botao}
+				onPress={exponeciacao}>
+				<Text 
+					style={styles.textoBotao}>Exponeciar
+				</Text>
+			</TouchableOpacity>
+			  
 		  </View>
     </View>
 	   <View style={styles.bloco2}>
@@ -91,8 +137,8 @@ const styles = StyleSheet.create({
 	botao:{
 		backgroundColor:'#32CD32',
 		borderRadius:20,
-		width:'28%'
-		
+		width:'28%',
+	    margin:'5px'
 	},
 	textoBotao:{
 		color:'#FFF',
